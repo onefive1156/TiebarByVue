@@ -1,4 +1,4 @@
-# mymusic
+# tiebar
 
 ## Project setup
 ```
