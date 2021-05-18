@@ -1,12 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-
+import App from './views/App'
+import Loading from "./plugin/Loading/index";
 Vue.config.productionTip = false
-
+Vue.use(Loading);
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    el: '#app',
+    render: c => c(App)
 }).$mount('#app')
