@@ -6,4 +6,4 @@ Vue.use(Loading);
 new Vue({
     el: '#app',
     render: c => c(userRegister)
-}).$mount('#app')
+})

@@ -5,5 +5,9 @@ Vue.config.productionTip = false
 Vue.use(Loading);
 new Vue({
     el: '#app',
-    render: c => c(App)
-}).$mount('#app')
+    // render: c => c(App)
+    components:{
+        app: App,
+    },
+    template: '<app></app>'
+})

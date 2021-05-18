@@ -6,30 +6,47 @@
             <span class="footer-tip-right">请遵守回复规则</span>
         </div>
         <div class="input-tie-title">
-            <input type="text" placeholder="请填写标题" @focus="focus($event)" @blur="blur($event)">
+            <input type="text" placeholder="请填写标题" @focus="focus($event)" @blur="blur($event)" v-model="title">
         </div>
         <div class="input-tie-content">
-            <div class="select-img"><input type="file" class="img-update"><span><img src="./../assets/s-img.png" alt="">图片</span></div>
-            <textarea name="" id="last-content" @focus="focus($event)" @blur="blur($event)"></textarea>
+            <div class="select-img"><input type="file" class="img-update" accept="image/png, image/jpeg, image/gif" ref="img"><span><img src="./../assets/s-img.png" alt="">图片</span></div>
+            <textarea name="" id="last-content" @focus="focus($event)" @blur="blur($event)" v-model = "text"></textarea>
         </div>
-        <div class="tie-submit">发表</div>
+        <div class="tie-submit" @click="send">发表</div>
     </div>
 </template>
 
 <script>
-    import store from './../store/index'
+    import store from './../store/index';
+    import axios from 'axios';
+    import qs from 'qs';
     export default {
         name: "barFooter",
         store: store,
+        data: function(){
+            return{
+                text:'',
+                title:'',
+            }
+        },
         methods:{
             focus(el){
-                // console.log(store.state.wasLogged);
                 this.$store.state.el = el;
                 this.$store.commit("focus");
             },
             blur(el){
                 this.$store.state.el = el;
                 this.$store.commit("blur");
+            },
+            send(){
+                let sendFormat = new FormData();
+                console.log(this.$refs.img.files[0]);
+                sendFormat.append("files", this.$refs.img.files[0]);
+                sendFormat.append("title", this.title);
+                sendFormat.append("text", this.text);
+                console.log(qs.stringify({
+                    data: "yupf",
+                }));
             }
         }
     }

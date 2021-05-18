@@ -78,7 +78,7 @@
                     Vue.hiddenLoading();
                     alert("网络错误，请稍后再试")
                     console.log(error);
-                })
+                });
             },
             userRegister(){
                 window.location.href = './userRegister.html';

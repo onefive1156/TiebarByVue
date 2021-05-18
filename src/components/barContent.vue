@@ -19,10 +19,10 @@
             <div class="show-bottom">
                 <div class="pageList">
                     <!--                <a href="javascript:" class="pageItem">1</a>-->
-                    <a href="" class="pageItem" v-show="nowPage != 1" @click="prePage">上一页</a>
-                    <a href="javascript:" class="pageItem" v-for="(index) in page" :class="{'currentPageItem': index === nowPage}" @click="toPage($event)" :key="index">{{index}}</a>
-                    <a href="" class="pageItem" @click="lastPage">末页</a>
-                    <a href="" class="pageItem" @click="nextPage">下一页</a>
+                    <a href="" class="pageItem" v-show="nowPage != 1" @click.prevent="prePage">上一页</a>
+                    <a href="javascript:" class="pageItem" v-for="(index) in page" :class="{'currentPageItem': index === nowPage}" @click.stop="toPage($event)" :key="index">{{index}}</a>
+                    <a href="" class="pageItem" @click.prevent="lastPage">末页</a>
+                    <a href="" class="pageItem" @click.prevent="nextPage">下一页</a>
                 </div>
             </div>
         </div>

@@ -14,6 +14,10 @@ module.exports = {
         abar:{
             entry: './src/abar.js',
             template: './public/abar.html',
+        },
+        atie:{
+            entry: './src/atie.js',
+            template: './public/atie.html',
         }
     },
     devServer: {

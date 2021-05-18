@@ -4,4 +4,4 @@ Vue.config.productionTip = false
 new Vue({
     el: '#app',
     render: c => c(App)
-}).$mount('#app')
+})

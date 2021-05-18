@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <barMenu></barMenu>
-        <barHeader></barHeader>
+        <barHeader><barHeadContent></barHeadContent></barHeader>
         <barContent></barContent>
         <barFooter></barFooter>
     </div>
@@ -12,6 +12,7 @@
     import barHeader from "../components/barHeader";
     import barContent from "../components/barContent";
     import barFooter from "../components/barFooter";
+    import barHeadContent from "../components/barHeadContent";
     export default {
         name: "abar",
         components: {
@@ -19,6 +20,7 @@
             barHeader: barHeader,
             barContent: barContent,
             barFooter: barFooter,
+            barHeadContent: barHeadContent,
         }
     }
 </script>

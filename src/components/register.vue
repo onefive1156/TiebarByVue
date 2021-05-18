@@ -103,7 +103,7 @@
                     }).catch(function (err) {
                         Vue.hiddenLoading();
                         console.log(err);
-                    })
+                    });
                 }
             },
             validateUserName() {

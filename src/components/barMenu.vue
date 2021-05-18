@@ -1,9 +1,9 @@
 <template>
-<div id="barMenu" @click="toTop">
-    <div class="to-top">
+<div id="barMenu">
+    <div class="to-top" @click="toTop">
         <img src="./../assets/to_top .png" alt=""/>
     </div>
-    <div class="to-bottom">
+    <div class="to-bottom" @click="toBottom">
         <img src="./../assets/to_bottom.png" alt=""/>
     </div>
 </div>
@@ -14,7 +14,27 @@
         name: "barMenu",
         methods: {
             toTop(){
+                let start = window.scrollY, end = 0, stop = null;
+                stop = setInterval(function () {
+                    start -= 40;
+                    if(start <= 0){
+                        start = 0;
+                        clearInterval(stop);
+                    }
+                    window.scroll(0, start);
+                },1)
+            },
+            toBottom(){
+                let start = window.scrollY, end = window.screen.height, stop = null;
+                stop = setInterval(function () {
+                    start += 40;
+                    if(start >= end){
+                        start = end;
+                        clearInterval(stop);
+                    }
+                    window.scroll(0, start);
 
+                },1)
             }
         }
     }
