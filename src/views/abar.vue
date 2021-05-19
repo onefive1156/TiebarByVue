@@ -2,8 +2,8 @@
     <div id="app">
         <barMenu></barMenu>
         <barHeader><barHeadContent></barHeadContent></barHeader>
-        <barContent></barContent>
-        <barFooter></barFooter>
+        <barContent><userInfo></userInfo></barContent>
+        <barFooter :is-bar="true"></barFooter>
     </div>
 </template>
 
@@ -13,6 +13,7 @@
     import barContent from "../components/barContent";
     import barFooter from "../components/barFooter";
     import barHeadContent from "../components/barHeadContent";
+    import userInfo from "../components/userInfo";
     export default {
         name: "abar",
         components: {
@@ -21,7 +22,8 @@
             barContent: barContent,
             barFooter: barFooter,
             barHeadContent: barHeadContent,
-        }
+            userInfo: userInfo,
+        },
     }
 </script>
 

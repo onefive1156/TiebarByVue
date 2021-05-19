@@ -2,7 +2,7 @@
     <div class="content">
         <div class="show-tie">
             <ul class="tie-list">
-                <li class="atie"  v-for="(tieInfo, index) in tieInfos">
+                <li class="atie"  v-for="(tieInfo, index) in tieInfos" @click="toTie(index)" :key="index">
                     <div class="atie-left"><img src="./../assets/reply_nums.png" alt="" class="reply-img"><span class="atie-reply-num">20</span></div>
                     <div class="atie-content">
                         <span class="atie-title">{{tieInfo.title}}</span>
@@ -16,36 +16,15 @@
                     </div>
                 </li>
             </ul>
-            <div class="show-bottom">
-                <div class="pageList">
-                    <!--                <a href="javascript:" class="pageItem">1</a>-->
-                    <a href="" class="pageItem" v-show="nowPage != 1" @click.prevent="prePage">上一页</a>
-                    <a href="javascript:" class="pageItem" v-for="(index) in page" :class="{'currentPageItem': index === nowPage}" @click.stop="toPage($event)" :key="index">{{index}}</a>
-                    <a href="" class="pageItem" @click.prevent="lastPage">末页</a>
-                    <a href="" class="pageItem" @click.prevent="nextPage">下一页</a>
-                </div>
-            </div>
+            <pageList></pageList>
         </div>
-        <div class="bar-user-info">
-            <div class="user-info">
-                <div class="user-head-img"><img src="./../assets/user_head.png" alt=""></div>
-                <div class="user-right">
-                    <img src="./../assets/integral.png" alt="">
-                    <span class="user-coin">10</span>
-                </div>
-            </div>
-            <div class="bar-master">
-                <span>本吧信息</span>
-                <div class="bar-master-head">
-                    <img src="./../assets/user_head.png" alt="">
-                    <span>吧主</span>
-                </div>
-            </div>
-        </div>
+        <slot #deflut="{userInfo}"></slot>
     </div>
 </template>
 
 <script>
+    import pageList from "./pageList";
+    import store from './../store/index'
     export default {
         name: "barContent",
         data:function () {
@@ -71,23 +50,32 @@
                     date: "2021-5-17",
                     substance: "贴四的内容"
                 }],
-                nowPage: 2,
-                page: 4,
+                // nowPage: 2,
+                // page: 4,
             }
         },
         methods:{
-            prePage(){
-                this.nowPage--;
-            },
-            nextPage(){
-                this.nowPage++;
-            },
-            lastPage(){
-                this.nowPage = this.page;
-            },
-            toPage(index){
-                this.nowPage = parseInt(index.path[0].innerText);
+            // prePage(){
+            //     this.nowPage--;
+            // },
+            // nextPage(){
+            //     this.nowPage++;
+            // },
+            // lastPage(){
+            //     this.nowPage = this.page;
+            // },
+            // toPage(index){
+            //     this.nowPage = parseInt(index.path[0].innerText);
+            // }
+            toTie(index){
+                console.log(this.tieInfos[index]);
+                this.$store.state.isBar = false;
+                console.log(this.$store.state.isBar);
+                window.location.href = './atie.html'
             }
+        },
+        components: {
+            pageList: pageList,
         },
         filters: {
             "formatAuthor": function (author) {
@@ -97,8 +85,8 @@
                     return author;
                 }
             }
-
-        }
+        },
+        store: store,
     }
 </script>
 
@@ -121,62 +109,7 @@
     /*background-color: red;*/
     /*float: left;*/
 }
-.bar-user-info{
-    width: 240px;
-    height: inherit;
-    border-left:  1px solid #e5e5e5;
-}
 
-.user-info{
-    width: 80%;
-    height: 74px;
-    margin: 50px auto;
-    /*background-color: green;*/
-}
-.user-head-img{
-     width: 47px;
-     float: left;
-}
-.user-head-img>img{
-    height: 40px;
-}
-.user-right{
-    float: left;
-    width: 100px;
-    height: 30px;
-}
-.user-right>img{
-    width: 30px;
-}
-.user-coin{
-    line-height: 30px;
-    vertical-align: top;
-    font-size: 15px;
-}
-.bar-master{
-    border-top: silver 1px solid;
-    height: 100px;
-    width: 191px;
-    padding: 15px 24px 15px 24px;
-    /*background-color: green;*/
-}
-.bar-master>span{
-    font-size: 15px;
-    display: inline-block;
-}
-.bar-master-head{
-    position: relative;
-    width: 40px;
-    height: 40px;
-}
-.bar-master-head>span{
-    display: inline-block;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    color: white;
-    background-color: rgba(0,0,0,0.3);
-}
 .tie-list{
     list-style: none;
     display: inline-block;
@@ -249,48 +182,5 @@
 .author-img{
     width: 30%;
     display: inline-block;
-}
-.show-bottom{
-    width: 740px;
-    height: 57px;
-    padding-top: 15px;
-    /*background-color: blue;*/
-}
-.pageList{
-    width: 720px;
-    height: 28px;
-    /*background-color: green;*/
-    margin: 0 0 15px 20px;
-}
-/*.pageList>a{*/
-/*    display: inline-block;*/
-/*    line-height: 28px;*/
-/*    width: 28px;*/
-/*    height: 28px;*/
-/*    text-align: center;*/
-/*    background-color: skyblue;*/
-/*}*/
-.pageItem{
-    display: inline-block;
-    line-height: normal;
-    text-decoration: none;
-    padding: 5px 9px;
-    font-size: 12px;
-    background: #fff;
-    color: #666;
-    border: 1px solid #e6e6e6;
-    margin-right: 2px;
-}
-.pageItem:hover{
-    color: #3a8bfc;
-    border: 1px solid #3a8bfc;
-}
-.currentPageItem{
-    border: 1px solid transparent;
-    color: #3a8bfc;
-}
-.currentPageItem:hover{
-    border: 1px solid transparent;
-    color: #3a8bfc;
 }
 </style>

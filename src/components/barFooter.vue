@@ -6,7 +6,7 @@
             <span class="footer-tip-right">请遵守回复规则</span>
         </div>
         <div class="input-tie-title">
-            <input type="text" placeholder="请填写标题" @focus="focus($event)" @blur="blur($event)" v-model="title">
+            <input type="text" placeholder="请填写标题" @focus="focus($event)" @blur="blur($event)" v-model="title" v-if="isBar">
         </div>
         <div class="input-tie-content">
             <div class="select-img"><input type="file" class="img-update" accept="image/png, image/jpeg, image/gif" ref="img"><span><img src="./../assets/s-img.png" alt="">图片</span></div>
@@ -15,7 +15,6 @@
         <div class="tie-submit" @click="send">发表</div>
     </div>
 </template>
-
 <script>
     import store from './../store/index';
     import axios from 'axios';
@@ -29,6 +28,7 @@
                 title:'',
             }
         },
+        props: ['isBar'],
         methods:{
             focus(el){
                 this.$store.state.el = el;
@@ -54,7 +54,7 @@
 
 <style scoped>
 .footer{
-    width: 980px;
+    width: 982px;
     height: 528px;
     padding-top: 32px;
     padding-left: 20px;
