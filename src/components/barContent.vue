@@ -7,7 +7,7 @@
                     <div class="atie-content">
                         <span class="atie-title">{{tieInfo.title}}</span>
                         <span class="atie-substance">{{tieInfo.substance}}</span>
-                        <img src="./../assets/test.jpg" alt="" style="display: block;width: 200px">
+                        <img src="./../assets/a_comment_img.jpg" alt="" style="display: block;width: 200px">
                     </div>
                     <div class="atie-right">
                         <img src="./../assets/author.png" alt="" class="author-img">
@@ -68,9 +68,7 @@
             //     this.nowPage = parseInt(index.path[0].innerText);
             // }
             toTie(index){
-                console.log(this.tieInfos[index]);
                 this.$store.state.isBar = false;
-                console.log(this.$store.state.isBar);
                 window.location.href = './atie.html'
             }
         },
@@ -113,6 +111,7 @@
 .tie-list{
     list-style: none;
     display: inline-block;
+    /*margin-bottom: 72px;*/
 }
 .tie-list>.atie{
     box-sizing: border-box;
@@ -182,5 +181,8 @@
 .author-img{
     width: 30%;
     display: inline-block;
+}
+.show-bottom{
+    transform: translateY(0%);
 }
 </style>

@@ -72,7 +72,7 @@
                         console.log(msg.data);
                         window.location.href = "./abar.html";
                     }else{
-
+                        alert("密码或用户名错误");
                     }
                 }).catch(function (error) {
                     Vue.hiddenLoading();
@@ -82,6 +82,9 @@
             },
             userRegister(){
                 window.location.href = './userRegister.html';
+            },
+            test(){
+                console.log("az");
             }
         },
         watch:{
@@ -96,6 +99,14 @@
                 }
             }
         },
+        mounted() {
+            let self = this;
+            document.onkeyup = function (e) {
+                if (e.code === "Enter"){
+                    self.login();
+                }
+            }
+        }
     }
 </script>
 

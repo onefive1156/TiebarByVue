@@ -52,7 +52,7 @@
         </div>
         <div class="header-search-box" :class="{'fixed' : scroll}">
             <input type="text" class="search-box-input" @focus="focus($event)" @blur="blur($event)"/>
-            <div class="suge-list" v-show="sugeListIsShow && wasLogged">
+            <div class="suge-list" v-show="sugeListIsShow && wasLogged" :style="scroll ? {'top': '70px'}:{'top': '50px'}">
                 <ul>
                     <li class="suge-list1"><span>最近常逛:</span></li>
                     <li class="suge-list2"><img src="./../assets/sample_search.jpg" alt=""><div class="suge-list-right">
@@ -391,6 +391,7 @@ a{
     box-shadow: 1px 1px 1px silver;
     background-color: white;
     border: silver 1px solid;
+    z-index: 999;
 }
 .fixed{
     position:fixed;
@@ -404,6 +405,7 @@ a{
 .s-fixed{
     top: 20px;
 }
+
 .suge-list>ul{
     list-style: none;
     display: block;
@@ -470,5 +472,17 @@ a{
     text-align: center;
     cursor: pointer;
 }
-
+.so-fixed{
+    width: 553px;
+    height: 242px;
+    /*background-color: skyblue;*/
+    position: absolute;
+    left: 50%;
+    top: 70px;
+    transform: translateX(-50%);
+    box-shadow: 1px 1px 1px silver;
+    background-color: white;
+    border: silver 1px solid;
+    z-index: 999;
+}
 </style>

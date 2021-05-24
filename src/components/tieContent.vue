@@ -7,7 +7,6 @@
 
 <script>
     import userInfo from "./userInfo";
-    import pageList from "./pageList";
     import tieComment from "./tieComment";
     export default {
         name: "tieContent",

@@ -167,6 +167,14 @@
                 }
             }
         },
+        mounted() {
+            let self = this;
+            document.onkeyup = function (e) {
+                if (e.code === "Enter"){
+                    self.submit();
+                }
+            }
+        },
         components:{
             captcha: captcha,
        },
