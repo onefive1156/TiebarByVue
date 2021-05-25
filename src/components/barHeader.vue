@@ -362,7 +362,7 @@ a{
     margin-top: 32px;
     position: relative;
     /*box-shadow: 0px 1px 3px transparent;*/
-    border-bottom: silver 2px none;
+    border-bottom: silver 1px none;
     box-sizing: border-box;
     background-color: white;
     transition: all linear 0.1s;
