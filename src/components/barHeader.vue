@@ -31,7 +31,7 @@
                 <li class="nav-member nav-elem" @mouseenter="showMore(2)" @mouseleave="hiddenMore(2)"><b class="member-icon"><img src="./../assets/member.png" alt=""></b><a href="javascript:">
                     <div class="more-member more" v-show="moreShow[2].show && wasLogged">
                         <ul class="more-in">
-                            <li class="more-member-in in"><img src="./../assets/integral.png" alt=""><span>硬币</span></li>
+                            <li class="more-member-in in" @click="recharge()"><img src="./../assets/integral.png" alt="" ><span>硬币</span></li>
                             <li class="more-member-in in"><img src="./../assets/store.png" alt=""><span>会员商城</span></li>
                             <li class="more-member-in in"><img src="./../assets/member2.png" alt=""><span>会员官网</span></li>
                         </ul><div class="arrow arrow3"></div></div>
@@ -45,7 +45,7 @@
                             <li class="more-more-in in"><span>贴吧设置</span></li>
                             <li class="more-more-in in"><span>服务中心</span></li>
                             <li class="more-more-in in"><span>问题反馈</span></li>
-                            <li class="more-more-in in"><span>退出</span></li>
+                            <li class="more-more-in in"@click="exit()"><span>退出</span></li>
                         </ul><div class="arrow arrow4"></div></div>
                     <span>更多</span></a><i></i></li>
             </ul>
@@ -146,6 +146,14 @@
             Scroll(){
                 this.scroll = document.documentElement.scrollTop >= 66;
                 // console.log(window.document.body.offsetHeight);
+            },
+            exit(){
+                VueCookies.remove("userName");
+                window.location.href = "./userLogin.html";
+            },
+            recharge(){
+                window.location.href = './recharge.html';
+                console.log("c");
             }
         },
         filters: {
@@ -159,6 +167,7 @@
         },
         created() {
             this.userName = Vue.$cookies.get("userName");
+            // this.userName = localStorage.getItem('userName');
             if(this.userName != null){
                 this.wasLogged = true;
             }
@@ -173,6 +182,10 @@
 </script>
 
 <style scoped>
+    *{
+        margin: 0;
+        padding: 0;
+    }
 #header{
     width: 100%;
     position: relative;
@@ -242,6 +255,7 @@ a{
 }
 .nav span{
     line-height: 33px;
+    font-size: 15px;
 }
 .member-icon{
     width: 20px;
@@ -348,6 +362,7 @@ a{
     left: 307px;
     height: 187px;
     transform: translateX(2%);
+    font-size: 15px;
 }
 .more-member>.more-in{
     width: 72px;

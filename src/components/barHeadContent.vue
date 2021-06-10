@@ -27,6 +27,9 @@
 </script>
 
 <style scoped>
+a{
+    text-decoration: none;
+}
 .header-content{
     width: 982px;
     height: 320px;
@@ -58,6 +61,8 @@
     color: #333;
     height: 40px;
     line-height: 40px;
+
+
 }
 .bar-introduce{
     width: 200px;

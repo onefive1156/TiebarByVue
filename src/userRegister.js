@@ -6,6 +6,6 @@ Vue.use(Loading, {
     title: "正在注册",
 });
 new Vue({
-    el: '#app',
+    // el: '#app',
     render: c => c(userRegister)
-})
+}).$mount('#app')

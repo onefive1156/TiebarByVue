@@ -14,27 +14,34 @@
         name: "barMenu",
         methods: {
             toTop(){
+                // console.log("cc");
                 let start = window.scrollY, end = 0, stop = null;
                 stop = setInterval(function () {
                     start -= 40;
+                    console.log(start);
                     if(start <= 0){
                         start = 0;
+                        window.scroll(0, 0);
                         clearInterval(stop);
                     }
                     window.scroll(0, start);
-                },1)
+                },2)
             },
             toBottom(){
-                let start = window.scrollY, end = window.screen.height, stop = null;
+                // console.log("zz");
+                let start = window.scrollY, end = document.querySelector("body").offsetHeight, stop = null;
+                // console.log(end);
                 stop = setInterval(function () {
                     start += 40;
                     if(start >= end){
                         start = end;
+                        window.scroll(0, end);
                         clearInterval(stop);
                     }
+                    // console.log('start');
+                    // console.log(start,end);
                     window.scroll(0, start);
-
-                },1)
+                },2)
             }
         }
     }

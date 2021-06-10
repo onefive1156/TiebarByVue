@@ -1,7 +1,6 @@
 <template>
   <div id="app">
       <login></login>
-<!--      <Loading></Loading>-->
   </div>
 </template>
 <script>

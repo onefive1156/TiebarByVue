@@ -2,37 +2,42 @@
     <div id="app">
         <barMenu></barMenu>
         <barHeader></barHeader>
-        <tieContent></tieContent>
-        <barFooter :is-bar="false"></barFooter>
+        <create></create>
         <webFooter></webFooter>
     </div>
 </template>
 
 <script>
-    import barHeader from "../components/barHeader";
-    import tieContent from "../components/tieContent";
-    import barFooter from "../components/barFooter";
     import barMenu from "../components/barMenu";
+    import barHeader from "../components/barHeader";
     import webFooter from "../components/webFooter";
-
+    import create from "../components/create";
     export default {
-        name: "App",
+        name: "createNewBar",
         components:{
             barHeader: barHeader,
-            tieContent: tieContent,
-            barFooter: barFooter,
             barMenu: barMenu,
             webFooter: webFooter,
+            create: create,
         }
     }
 </script>
 
-<style>
+<style scoped>
 *{
     margin: 0;
     padding: 0;
+    font-size: 12px;
 }
 html,body{
-    font-size: 12px;
+     margin: 0;
+     padding: 0;
+ }
+#webFooter{
+    width: 100%;
+    height: 50px;
+    /*background-color: red;*/
+    position: relative;
+    top: 0;
 }
 </style>

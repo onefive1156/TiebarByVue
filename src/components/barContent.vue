@@ -13,6 +13,10 @@
                         <img src="./../assets/author.png" alt="" class="author-img">
                         <span class="atie-author">{{tieInfo.author | formatAuthor}}</span>
                         <span class="release-time">{{tieInfo.date}}</span>
+                        <div class="other">
+                            <div class="likes"><img src="./../assets/likes.png" alt=""><p class="other-nums">10</p></div>
+                            <div class="coin-operated"><img src="./../assets/coins.png" alt=""><p class="other-nums">10</p></div>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -24,7 +28,11 @@
 
 <script>
     import pageList from "./pageList";
-    import store from './../store/index'
+    import store from './../store/index';
+    import axios from 'axios';
+    import qs from 'qs';
+    import Vue from "vue";
+    import VueCookies from "vue-cookies";
     export default {
         name: "barContent",
         data:function () {
@@ -85,6 +93,19 @@
             }
         },
         store: store,
+        created() {
+            // console.log(qs.stringify({
+            //     pBarName: '贴吧吧',
+            // }));
+
+            axios.post('/RNG/barIndex',qs.stringify({
+                pBarName: '贴吧吧',
+            })).then(function (msg) {
+                console.log(msg);
+            }).catch(function (error) {
+                console.log(error);
+            })
+        }
     }
 </script>
 
@@ -164,13 +185,13 @@
 }
 .atie-right{
     width: 60px;
-    height: 37px;
+    /*height: 37px;*/
     display: inline-block;
 }
 .atie-author{
     display: inline-block;
     width: 70%;
-    height: 20%;
+    line-height: 12px;
     float: right;
 }
 .release-time{
@@ -184,5 +205,24 @@
 }
 .show-bottom{
     transform: translateY(0%);
+}
+.likes{
+    /*width: 50%;*/
+    /*display: inline-block;*/
+}
+.coin-operated{
+    /*width: 50%;*/
+    /*display: inline-block;*/
+}
+.likes>img{
+    width: 18px;
+}
+.coin-operated>img{
+    width: 18px;
+}
+.other-nums{
+    display: inline-block;
+    width: 12px;
+    vertical-align: top;
 }
 </style>

@@ -69,7 +69,7 @@
 .show-bottom{
     position: relative;
     bottom: -57px;
-    padding-top: 0px;
+    padding-top: 0px ;
     margin-top: 10px;
  }
 </style>

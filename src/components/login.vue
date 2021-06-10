@@ -3,7 +3,7 @@
         <a class='login-fail' v-show="nameTipIsShow">请您输入手机/邮箱/用户名</a>
         <a class='login-fail' v-show="pwdTipIsShow">请您输入密码</a>
         <p class="loginTip">用户名密码登录</p>
-        <div class="userName"><input @focus="focus($event)" @blur="blur($event)" v-model="userName" type="text" placeholder="邮箱/用户名" maxlength="14"/></div>
+        <div class="userName"><input @focus="focus($event)" @blur="blur($event)" v-model="userName" type="text" placeholder="邮箱/用户名" maxlength="20"/></div>
         <div class="passWord"><input @focus="focus($event)" @blur="blur($event)" v-model="userPwd" type="password" placeholder="密码" maxlength="14"/></div>
         <div class="submit" @click="login">登录</div>
         <a href="javascript:" class="forget-password">忘记密码?</a>
@@ -67,9 +67,9 @@
                 })).then(function (msg) {
                     Vue.hiddenLoading();
                     if(msg.data.loginJudge === 'true'){
-                        VueCookies.set("userName", msg.data.userName, "10MIN");
-                        console.log(Vue.$cookies.get("userName"));
-                        console.log(msg.data);
+                        VueCookies.set("userName", msg.data.userName, "300MIN");
+                        // localStorage.setItem('userName', msg.data.userName);
+                        // console.log(localStorage.getItem('userName'));
                         window.location.href = "./abar.html";
                     }else{
                         alert("密码或用户名错误");

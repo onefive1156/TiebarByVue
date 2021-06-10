@@ -83,6 +83,9 @@
                 this.captchaErrorIsShow = !this.captchaJudge();
                 console.log(this.nameErrorIsShow, this.emailErrorIsShow, this.pwdErrorIsShow, this.captchaErrorIsShow);
                 if(!this.nameErrorIsShow && !this.emailErrorIsShow && !this.pwdErrorIsShow && !this.captchaErrorIsShow){
+                // if(!(this.nameErrorIsShow && this.emailErrorIsShow && this.pwdErrorIsShow && this.captchaErrorIsShow)){
+                    //判断条件有误
+                    // document.querySelector("")
                     Vue.showLoading();
                     let self = this;
                     axios.post("/RNG/UserRegister",qs.stringify({

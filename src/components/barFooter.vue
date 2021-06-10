@@ -44,9 +44,14 @@
                 sendFormat.append("files", this.$refs.img.files[0]);
                 sendFormat.append("title", this.title);
                 sendFormat.append("text", this.text);
-                console.log(qs.stringify({
-                    data: "yupf",
-                }));
+                console.log(sendFormat);
+                console.log(sendFormat.get('files'));
+                // console.log(qs.stringify({
+                //     data: sendFormat,
+                // }));
+                let myConfig = {
+                    headers: {'Content-Type': 'multipart/form-data'},
+                }
             }
         }
     }

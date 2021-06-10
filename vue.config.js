@@ -18,17 +18,30 @@ module.exports = {
         atie:{
             entry: './src/atie.js',
             template: './public/atie.html',
+        },
+        recharge:{
+            entry: './src/recharge.js',
+            template: './public/recharge.html',
+        },
+        createNewBar:{
+            entry: './src/createNewBar.js',
+            template: './public/createNewBar.html',
         }
     },
     devServer: {
         proxy: {
             '/RNG/UserLogin': {
                 target:"http://121.5.151.159",
+                // target: 'http://192.168.1.101:8080',
             },
             '/RNG/UserRegister':{
                 target: 'http://121.5.151.159',
+                // target: 'http://192.168.1.101:8080',
+            },
+            '/RNG/barIndex': {
+                target: 'http://121.5.151.159',
+                // target: 'http://192.168.1.101:8080',
             }
-
         }
     }
 }

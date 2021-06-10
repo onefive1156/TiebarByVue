@@ -4,6 +4,7 @@
         <barHeader><barHeadContent></barHeadContent></barHeader>
         <barContent><userInfo></userInfo></barContent>
         <barFooter :is-bar="true"></barFooter>
+        <webFooter></webFooter>
     </div>
 </template>
 
@@ -14,6 +15,7 @@
     import barFooter from "../components/barFooter";
     import barHeadContent from "../components/barHeadContent";
     import userInfo from "../components/userInfo";
+    import webFooter from "../components/webFooter";
     export default {
         name: "abar",
         components: {
@@ -23,6 +25,7 @@
             barFooter: barFooter,
             barHeadContent: barHeadContent,
             userInfo: userInfo,
+            webFooter: webFooter,
         },
     }
 </script>

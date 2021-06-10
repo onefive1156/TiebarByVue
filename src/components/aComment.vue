@@ -34,6 +34,11 @@
                                         <div class="reply-text-out">
                                             <span class="reply-text">一条评论</span>
                                         </div></div>
+                                    <div :key="d" class="a-reply" v-show="replyIsShow"><div class="reply-head">
+                                        <img src="./../assets/user_head.png" alt=""><a href="" @click.prevent="" class="reply-user-name">aaaa:</a></div>
+                                        <div class="reply-text-out">
+                                            <span class="reply-text">一条评论</span>
+                                        </div></div>
                                 </transition-group>
                         <div class="user-reply" v-show="replyIsShow">
                             <transition name="reply-move">
@@ -63,6 +68,7 @@
                 a: 'a',
                 b: 'b',
                 c: 'c',
+                d: 'd',
             }
         },
         methods:{
@@ -165,7 +171,7 @@
 }
 .replies{
     width: 80%;
-    height: 225px;
+    /*height: 225px;*/
     background-color: #fbfbfd;
     position: relative;
     left: 19%;
@@ -183,7 +189,7 @@
     /*list-style: none;*/
     width: 100%;
     margin-bottom: 5px;
-    padding: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 30px;
     box-sizing: border-box;
     overflow: hidden;
 }
