@@ -10,8 +10,8 @@
         </div>
         <div class="bar-nav">
             <ul class="bar-check">
-                <li class="bar-tie">看帖</li>
-                <li class="bar-video">视频</li>
+                <li class="bar-tie" @click="toTie">看帖</li>
+                <li class="bar-video" @click="toVideo">视频</li>
                 <li class="bar-in-search"><input type="text"><div class="bar-in-search-img">
                     <img src="./../assets/bar-in-search.png" alt="">
                 </div></li>
@@ -21,8 +21,23 @@
 </template>
 
 <script>
+    import store from './../store/index';
     export default {
-        name: "barHeadContent"
+        name: "barHeadContent",
+        store: store,
+        props: ['isTie'],
+        // methods: function () {
+        //
+        // }
+        methods:{
+            toTie(){
+                store.commit('changeTie', true);
+            },
+            toVideo(){
+                // store.state.isTie = false;
+                store.commit('changeTie', false);
+            }
+        }
     }
 </script>
 

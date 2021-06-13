@@ -23,10 +23,42 @@
     </style>
 </head>
 <body>
-<div class="gf">
-    <div class="f">
-        <div class="son"></div>
-    </div>
-</div>
+
+<video id="video" controls="controls">
+    <source src="./../src/assets/League%20of%20Legends%20(TM)%20Client%202020-12-28%2000-25-05.mp4">
+</video>
+<div id="output"></div>
 </body>
+<script>
+    var video, output;
+    var scale = 0.3;
+    // var initialize =
+    // function() {
+    //     output = document.getElementById("output");
+    //     video = document.getElementById("video");
+    //     // video.addEventListener('click',captureImage);
+    // };
+    // var captureImage =
+    (function(){
+        var video, output;
+        var scale = 0.3;
+        ( function() {
+            output = document.getElementById("output");
+            video = document.getElementById("video");
+            video.addEventListener('click',function() {
+                console.log('cnm');
+                var canvas = document.createElement("canvas");
+                canvas.width = video.videoWidth * scale;
+                canvas.height = video.videoHeight * scale;
+                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                var img = document.createElement("img");
+                img.src = canvas.toDataURL("image/png");
+                output.appendChild(img);
+            });
+
+        })();
+    })();
+
+</script>
 </html>

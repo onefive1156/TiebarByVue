@@ -2,14 +2,14 @@
     <div class="footer">
         <div class="footer-tip">
             <img src="./../assets/bottom_tip_reply.png" alt="">
-            <span class="footer-tip-left">发表回复</span>
+            <span class="footer-tip-left">发表{{$store.state.inputContent}}</span>
             <span class="footer-tip-right">请遵守回复规则</span>
         </div>
         <div class="input-tie-title">
             <input type="text" placeholder="请填写标题" @focus="focus($event)" @blur="blur($event)" v-model="title" v-if="isBar">
         </div>
         <div class="input-tie-content">
-            <div class="select-img"><input type="file" class="img-update" accept="image/png, image/jpeg, image/gif" ref="img"><span><img src="./../assets/s-img.png" alt="">图片</span></div>
+            <div class="select-img"><input type="file" class="img-update" accept="image/png, image/jpeg, image/gif" ref="img"><span><img src="./../assets/s-img.png" alt="">{{$store.state.inputContent}}</span></div>
             <textarea name="" id="last-content" @focus="focus($event)" @blur="blur($event)" v-model = "text"></textarea>
         </div>
         <div class="tie-submit" @click="send">发表</div>
@@ -26,9 +26,11 @@
             return{
                 text:'',
                 title:'',
+                choose: '回复',
+
             }
         },
-        props: ['isBar'],
+        props: ['isBar', 'isTie'],
         methods:{
             focus(el){
                 this.$store.state.el = el;

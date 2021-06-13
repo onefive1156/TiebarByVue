@@ -19,6 +19,10 @@ module.exports = {
             entry: './src/atie.js',
             template: './public/atie.html',
         },
+        aVideo:{
+            entry: './src/aVideo.js',
+            template: './public/aVideo.html',
+        },
         recharge:{
             entry: './src/recharge.js',
             template: './public/recharge.html',

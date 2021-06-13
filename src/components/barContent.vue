@@ -1,8 +1,8 @@
 <template>
     <div class="content">
         <div class="show-tie">
-            <ul class="tie-list">
-                <li class="atie"  v-for="(tieInfo, index) in tieInfos" @click="toTie(index)" :key="index">
+            <ul class="tie-list" v-if="this.$store.state.isTie" @click="toTie($event)">
+                <li class="atie"  v-for="(tieInfo, index) in tieInfos" :key="index">
                     <div class="atie-left"><img src="./../assets/reply_nums.png" alt="" class="reply-img"><span class="atie-reply-num">20</span></div>
                     <div class="atie-content">
                         <span class="atie-title">{{tieInfo.title}}</span>
@@ -13,6 +13,25 @@
                         <img src="./../assets/author.png" alt="" class="author-img">
                         <span class="atie-author">{{tieInfo.author | formatAuthor}}</span>
                         <span class="release-time">{{tieInfo.date}}</span>
+                        <div class="other">
+                            <div class="likes"><img src="./../assets/likes.png" alt=""><p class="other-nums">10</p></div>
+                            <div class="coin-operated"><img src="./../assets/coins.png" alt=""><p class="other-nums">10</p></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="tie-list" v-if="!this.$store.state.isTie" @click="toVideo($event)">
+                <li class="atie"  v-for="(videoInfo, index) in videoInfos" :key="index">
+                    <div class="atie-left"><img src="./../assets/reply_nums.png" alt="" class="reply-img"><span class="atie-reply-num">20</span></div>
+                    <div class="atie-content">
+                        <span class="atie-title">{{videoInfo.title}}</span>
+                        <span class="atie-substance">{{videoInfo.substance}}</span>
+                        <img src="./../assets/a_comment_img.jpg" alt="" style="display: block;width: 200px">
+                    </div>
+                    <div class="atie-right">
+                        <img src="./../assets/author.png" alt="" class="author-img">
+                        <span class="atie-author">{{videoInfo.author | formatAuthor}}</span>
+                        <span class="release-time">{{videoInfo.date}}</span>
                         <div class="other">
                             <div class="likes"><img src="./../assets/likes.png" alt=""><p class="other-nums">10</p></div>
                             <div class="coin-operated"><img src="./../assets/coins.png" alt=""><p class="other-nums">10</p></div>
@@ -58,6 +77,27 @@
                     date: "2021-5-17",
                     substance: "贴四的内容"
                 }],
+                videoInfos:[{
+                    title: "视频一",
+                    author: "作者一aaaaa",
+                    date: "2021-6-10",
+                    substance: "视频一的内容"
+                },{
+                    title: "视频二",
+                    author: "作者二",
+                    date: "2021-6-10",
+                    substance: "视频二的内容"
+                },{
+                    title: "视频三",
+                    author: "作者三",
+                    date: "2021-6-10",
+                    substance: "视频三的内容"
+                },{
+                    title: "视频四",
+                    author: "作者四",
+                    date: "2021-6-10",
+                    substance: "视频四的内容"
+                }],
                 // nowPage: 2,
                 // page: 4,
             }
@@ -75,9 +115,14 @@
             // toPage(index){
             //     this.nowPage = parseInt(index.path[0].innerText);
             // }
-            toTie(index){
-                this.$store.state.isBar = false;
+            toTie(el){
+                this.$store.state.isTie = false;
                 window.location.href = './atie.html'
+            },
+            toVideo(el){
+                this.$store.state.isTie = false;
+                console.log(el.target);
+                window.location.href = './aVideo.html'
             }
         },
         components: {

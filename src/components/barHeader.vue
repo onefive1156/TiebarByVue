@@ -122,10 +122,10 @@
         methods: {
             jumpLogin(){
                 if(this.wasLogged === false){
-                    console.log("ccc");
+                    // console.log("ccc");
                     window.location.href = './userLogin.html';
                 }
-                console.log("ccc");
+                // console.log("ccc");
             },
             showMore(index){
                 this.moreShow[index].show = true;
