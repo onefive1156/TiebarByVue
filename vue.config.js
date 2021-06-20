@@ -36,15 +36,32 @@ module.exports = {
         proxy: {
             '/RNG/UserLogin': {
                 target:"http://121.5.151.159",
-                // target: 'http://192.168.1.101:8080',
+                // target: 'http://192.168.1.108:8080',
             },
             '/RNG/UserRegister':{
                 target: 'http://121.5.151.159',
                 // target: 'http://192.168.1.101:8080',
+                // target: 'http://192.168.1.108:8080',
             },
             '/RNG/barIndex': {
                 target: 'http://121.5.151.159',
                 // target: 'http://192.168.1.101:8080',
+                // target: 'http://192.168.1.108:8080',
+            },
+            '/RNG/addCoin': {
+                target: 'http://121.5.151.159',
+                // target: 'http://192.168.1.101:8080',
+                // target: 'http://192.168.1.108:8080',
+            },
+            '/RNG/addLike': {
+                target: 'http://121.5.151.159',
+                // target: 'http://192.168.1.101:8080',
+                // target: 'http://192.168.1.108:8080',
+            },
+            '/RNG/createBar': {
+                target: 'http://121.5.151.159',
+                // target: 'http://192.168.1.101:8080',
+                // target: 'http://192.168.1.108:8080',
             }
         }
     }

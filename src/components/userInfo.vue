@@ -13,6 +13,7 @@
                 <img src="./../assets/user_head.png" alt="">
                 <span>吧主</span>
             </div>
+            <span style="font-size: 12px">杨鹏飞</span>
         </div>
     </div>
 </template>

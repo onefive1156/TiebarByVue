@@ -8,6 +8,9 @@ export default new Vuex.Store({
       wasLogged: false,
       isTie: true,
       inputContent: '帖子',
+      barId: 0,
+      nowPage: 1,
+      page: 0,
   },
   mutations: {
     focus(state){
@@ -21,7 +24,23 @@ export default new Vuex.Store({
     changeTie(state, payload){
        state.isTie = payload;
        state.inputContent = state.isTie ? '帖子' : '视频';
-    }
+    },
+      getBarId(state, payload){
+        state.barId = payload;
+      },
+      pageDown(state, payload){
+        state.nowPage--;
+      },
+      pageUp(state, payload){
+        state.nowPage++;
+      },
+      setPage(state, page){
+        state.page = page;
+      },
+      setNowPage(state, nowPage){
+        state.nowPage = nowPage;
+          console.log(nowPage);
+      }
   },
   actions: {
   },

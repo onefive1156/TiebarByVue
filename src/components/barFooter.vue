@@ -19,6 +19,7 @@
     import store from './../store/index';
     import axios from 'axios';
     import qs from 'qs';
+    import VueCookies from 'vue-cookies';
     export default {
         name: "barFooter",
         store: store,
@@ -30,7 +31,7 @@
 
             }
         },
-        props: ['isBar', 'isTie'],
+        props: ['isBar'],
         methods:{
             focus(el){
                 this.$store.state.el = el;
@@ -42,18 +43,25 @@
             },
             send(){
                 let sendFormat = new FormData();
-                console.log(this.$refs.img.files[0]);
-                sendFormat.append("files", this.$refs.img.files[0]);
-                sendFormat.append("title", this.title);
-                sendFormat.append("text", this.text);
-                console.log(sendFormat);
-                console.log(sendFormat.get('files'));
-                // console.log(qs.stringify({
-                //     data: sendFormat,
-                // }));
+                // console.log(this.$refs.img.files[0]);
+                sendFormat.append("processFile", this.$refs.img.files[0]);
+                if(this.isBar){
+                    sendFormat.append("title", this.title);
+                }
+                sendFormat.append("respTextWord", this.text);
+                sendFormat.append("pBarID", store.state.barId);
+                sendFormat.append('authorName', VueCookies.get("userName"));
+                // console.log(sendFormat);
+                // console.log(sendFormat.get('files'));
                 let myConfig = {
                     headers: {'Content-Type': 'multipart/form-data'},
                 }
+                axios.post('/RNG/createBar',sendFormat, myConfig)
+                    .then((msg)=>{
+                        console.log(msg);
+                    }).catch((error)=>{
+                    console.log(error.response);
+                })
             }
         }
     }
